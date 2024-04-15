@@ -1,11 +1,11 @@
 server:
-  port: 9999
+  port: 9981
 
 spring:
   application:
     name: wieex-app
   profiles:
-    active: dev
+    active: prod
 #  main:
 #    allow-circular-references: true
   mvc:
@@ -52,3 +52,6 @@ secure:
       - /admin/register
       - /admin/info
       - /admin/logout
+      - /chip/**
+      - /apeman/**
+      - /uvoice/**
