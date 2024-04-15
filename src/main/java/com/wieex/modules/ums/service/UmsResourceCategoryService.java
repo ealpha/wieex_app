@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  * 后台资源分类管理Service
-
  */
 public interface UmsResourceCategoryService extends IService<UmsResourceCategory> {
 

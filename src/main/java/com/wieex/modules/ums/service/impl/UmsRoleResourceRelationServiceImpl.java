@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 /**
  * 角色资源关系管理Service实现类
-
  */
 @Service
 public class UmsRoleResourceRelationServiceImpl extends ServiceImpl<UmsRoleResourceRelationMapper, UmsRoleResourceRelation> implements UmsRoleResourceRelationService {

@@ -17,11 +17,10 @@ import java.util.List;
 
 /**
  * 后台菜单管理Controller
-
  */
 @Controller
 @Api(tags = "UmsMenuController")
-@Tag(name = "UmsMenuController",description = "后台菜单管理")
+@Tag(name = "UmsMenuController", description = "后台菜单管理")
 @RequestMapping("/menu")
 public class UmsMenuController {
 

@@ -22,10 +22,9 @@ import java.util.List;
 
 /**
  * 后台角色管理Service实现类
-
  */
 @Service
-public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper,UmsRole>implements UmsRoleService {
+public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> implements UmsRoleService {
     @Autowired
     private UmsAdminCacheService adminCacheService;
     @Autowired
@@ -36,6 +35,7 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper,UmsRole>implem
     private UmsMenuMapper menuMapper;
     @Autowired
     private UmsResourceMapper resourceMapper;
+
     @Override
     public boolean create(UmsRole role) {
         role.setCreateTime(new Date());
@@ -53,13 +53,13 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper,UmsRole>implem
 
     @Override
     public Page<UmsRole> list(String keyword, Integer pageSize, Integer pageNum) {
-        Page<UmsRole> page = new Page<>(pageNum,pageSize);
+        Page<UmsRole> page = new Page<>(pageNum, pageSize);
         QueryWrapper<UmsRole> wrapper = new QueryWrapper<>();
         LambdaQueryWrapper<UmsRole> lambda = wrapper.lambda();
-        if(StrUtil.isNotEmpty(keyword)){
-            lambda.like(UmsRole::getName,keyword);
+        if (StrUtil.isNotEmpty(keyword)) {
+            lambda.like(UmsRole::getName, keyword);
         }
-        return page(page,wrapper);
+        return page(page, wrapper);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper,UmsRole>implem
     public int allocMenu(Long roleId, List<Long> menuIds) {
         //先删除原有关系
         QueryWrapper<UmsRoleMenuRelation> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(UmsRoleMenuRelation::getRoleId,roleId);
+        wrapper.lambda().eq(UmsRoleMenuRelation::getRoleId, roleId);
         roleMenuRelationService.remove(wrapper);
         //批量插入新关系
         List<UmsRoleMenuRelation> relationList = new ArrayList<>();
@@ -99,7 +99,7 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper,UmsRole>implem
     public int allocResource(Long roleId, List<Long> resourceIds) {
         //先删除原有关系
         QueryWrapper<UmsRoleResourceRelation> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(UmsRoleResourceRelation::getRoleId,roleId);
+        wrapper.lambda().eq(UmsRoleResourceRelation::getRoleId, roleId);
         roleResourceRelationService.remove(wrapper);
         //批量插入新关系
         List<UmsRoleResourceRelation> relationList = new ArrayList<>();

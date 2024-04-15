@@ -5,11 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.wieex.modules.ums.model.UmsResource;
 
-import java.util.List;
-
 /**
  * 后台资源管理Service
-
  */
 public interface UmsResourceService extends IService<UmsResource> {
     /**

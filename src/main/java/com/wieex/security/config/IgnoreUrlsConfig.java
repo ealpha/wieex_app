@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * 用于配置白名单资源路径
-
  */
 @Getter
 @Setter

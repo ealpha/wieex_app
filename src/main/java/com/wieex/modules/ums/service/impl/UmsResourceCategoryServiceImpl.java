@@ -12,10 +12,9 @@ import java.util.List;
 
 /**
  * 后台资源分类管理Service实现类
-
  */
 @Service
-public class UmsResourceCategoryServiceImpl extends ServiceImpl<UmsResourceCategoryMapper,UmsResourceCategory> implements UmsResourceCategoryService {
+public class UmsResourceCategoryServiceImpl extends ServiceImpl<UmsResourceCategoryMapper, UmsResourceCategory> implements UmsResourceCategoryService {
 
     @Override
     public List<UmsResourceCategory> listAll() {

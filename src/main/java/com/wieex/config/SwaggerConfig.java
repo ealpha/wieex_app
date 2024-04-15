@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 
 /**
  * Swagger API文档相关配置
-
  */
 @Configuration
 @EnableSwagger2
@@ -27,10 +26,10 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     @Override
     public SwaggerProperties swaggerProperties() {
         return SwaggerProperties.builder()
-                .apiBasePackage("com.wieex.modules")
-                .title("Wieex-App项目骨架")
-                .description("Wieex-App项目骨架相关接口文档")
-                .contactName("txshi")
+                .apiBasePackage("com.wieex.modules.chip")
+                .title("aizip.ai 模型授权平台")
+                .description("aizip.ai 模型授权平台，第三方接口文档")
+                .contactName("taixiang@aizip.ai")
                 .version("1.0")
                 .enableSecurity(true)
                 .build();

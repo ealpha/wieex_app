@@ -1,7 +1,7 @@
 package com.wieex.modules.ums.mapper;
 
-import com.wieex.modules.ums.model.UmsResource;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.wieex.modules.ums.model.UmsResource;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,9 +10,6 @@ import java.util.List;
  * <p>
  * 后台资源表 Mapper 接口
  * </p>
- *
-
-
  */
 public interface UmsResourceMapper extends BaseMapper<UmsResource> {
 

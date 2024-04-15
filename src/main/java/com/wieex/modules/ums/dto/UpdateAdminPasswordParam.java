@@ -8,7 +8,6 @@ import javax.validation.constraints.NotEmpty;
 
 /**
  * 修改用户名密码参数
-
  */
 @Getter
 @Setter

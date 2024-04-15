@@ -4,13 +4,10 @@ import com.wieex.modules.ums.model.UmsResource;
 import com.wieex.modules.ums.service.UmsAdminService;
 import com.wieex.modules.ums.service.UmsResourceService;
 import com.wieex.security.component.DynamicSecurityService;
-import com.wieex.security.config.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.ConfigAttribute;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -20,10 +17,9 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * mall-security模块相关配置
  * 自定义配置，用于配置如何获取用户信息及动态权限
-
  */
 @Configuration
-public class MallSecurityConfig {
+public class WieexSecurityConfig {
 
     @Autowired
     private UmsAdminService adminService;

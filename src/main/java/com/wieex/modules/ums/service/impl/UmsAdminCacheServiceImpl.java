@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 
 /**
  * 后台用户缓存管理Service实现类
-
  */
 @Service
 public class UmsAdminCacheServiceImpl implements UmsAdminCacheService {
@@ -58,7 +57,7 @@ public class UmsAdminCacheServiceImpl implements UmsAdminCacheService {
     @Override
     public void delResourceListByRole(Long roleId) {
         QueryWrapper<UmsAdminRoleRelation> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(UmsAdminRoleRelation::getRoleId,roleId);
+        wrapper.lambda().eq(UmsAdminRoleRelation::getRoleId, roleId);
         List<UmsAdminRoleRelation> relationList = adminRoleRelationService.list(wrapper);
         if (CollUtil.isNotEmpty(relationList)) {
             String keyPrefix = REDIS_DATABASE + ":" + REDIS_KEY_RESOURCE_LIST + ":";
@@ -70,7 +69,7 @@ public class UmsAdminCacheServiceImpl implements UmsAdminCacheService {
     @Override
     public void delResourceListByRoleIds(List<Long> roleIds) {
         QueryWrapper<UmsAdminRoleRelation> wrapper = new QueryWrapper<>();
-        wrapper.lambda().in(UmsAdminRoleRelation::getRoleId,roleIds);
+        wrapper.lambda().in(UmsAdminRoleRelation::getRoleId, roleIds);
         List<UmsAdminRoleRelation> relationList = adminRoleRelationService.list(wrapper);
         if (CollUtil.isNotEmpty(relationList)) {
             String keyPrefix = REDIS_DATABASE + ":" + REDIS_KEY_RESOURCE_LIST + ":";

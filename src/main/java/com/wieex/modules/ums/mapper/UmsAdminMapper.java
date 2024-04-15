@@ -1,7 +1,7 @@
 package com.wieex.modules.ums.mapper;
 
-import com.wieex.modules.ums.model.UmsAdmin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.wieex.modules.ums.model.UmsAdmin;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,9 +10,6 @@ import java.util.List;
  * <p>
  * 后台用户表 Mapper 接口
  * </p>
- *
-
-
  */
 public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
 

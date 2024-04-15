@@ -5,7 +5,6 @@ import com.wieex.common.api.IErrorCode;
 
 /**
  * 自定义API异常
-
  */
 public class ApiException extends RuntimeException {
     private IErrorCode errorCode;

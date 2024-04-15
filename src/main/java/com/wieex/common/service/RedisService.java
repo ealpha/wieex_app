@@ -6,7 +6,6 @@ import java.util.Set;
 
 /**
  * redis操作Service
-
  */
 public interface RedisService {
 

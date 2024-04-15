@@ -2,13 +2,11 @@ package com.wieex.security.component;
 
 import com.wieex.security.config.IgnoreUrlsConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.intercept.AbstractSecurityInterceptor;
 import org.springframework.security.access.intercept.InterceptorStatusToken;
 import org.springframework.security.web.FilterInvocation;
-import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 
@@ -18,7 +16,6 @@ import java.io.IOException;
 
 /**
  * 动态权限过滤器，用于实现基于路径的动态权限过滤
-
  */
 public class DynamicSecurityFilter extends AbstractSecurityInterceptor implements Filter {
 
@@ -41,14 +38,14 @@ public class DynamicSecurityFilter extends AbstractSecurityInterceptor implement
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         FilterInvocation fi = new FilterInvocation(servletRequest, servletResponse, filterChain);
         //OPTIONS请求直接放行
-        if(request.getMethod().equals(HttpMethod.OPTIONS.toString())){
+        if (request.getMethod().equals(HttpMethod.OPTIONS.toString())) {
             fi.getChain().doFilter(fi.getRequest(), fi.getResponse());
             return;
         }
         //白名单请求直接放行
         PathMatcher pathMatcher = new AntPathMatcher();
         for (String path : ignoreUrlsConfig.getUrls()) {
-            if(pathMatcher.match(path,request.getRequestURI())){
+            if (pathMatcher.match(path, request.getRequestURI())) {
                 fi.getChain().doFilter(fi.getRequest(), fi.getResponse());
                 return;
             }

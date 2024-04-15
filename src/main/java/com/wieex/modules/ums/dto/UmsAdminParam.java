@@ -9,7 +9,6 @@ import javax.validation.constraints.NotEmpty;
 
 /**
  * 用户登录参数
-
  */
 @Getter
 @Setter

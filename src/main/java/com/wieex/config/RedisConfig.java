@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Redis配置类
-
  */
 @EnableCaching
 @Configuration

@@ -1,7 +1,6 @@
 package com.wieex.modules.ums.service;
 
 
-
 import com.wieex.modules.ums.model.UmsAdmin;
 import com.wieex.modules.ums.model.UmsResource;
 
@@ -9,7 +8,6 @@ import java.util.List;
 
 /**
  * 后台用户缓存管理Service
-
  */
 public interface UmsAdminCacheService {
     /**

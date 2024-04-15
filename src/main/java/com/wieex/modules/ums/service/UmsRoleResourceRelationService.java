@@ -5,7 +5,6 @@ import com.wieex.modules.ums.model.UmsRoleResourceRelation;
 
 /**
  * 角色资源关系管理Service
-
  */
 public interface UmsRoleResourceRelationService extends IService<UmsRoleResourceRelation> {
 }

@@ -14,7 +14,6 @@ import java.util.List;
 
 /**
  * 后台管理员管理Service
-
  */
 public interface UmsAdminService extends IService<UmsAdmin> {
     /**
@@ -29,14 +28,16 @@ public interface UmsAdminService extends IService<UmsAdmin> {
 
     /**
      * 登录功能
+     *
      * @param username 用户名
      * @param password 密码
      * @return 生成的JWT的token
      */
-    String login(String username,String password);
+    String login(String username, String password);
 
     /**
      * 刷新token的功能
+     *
      * @param oldToken 旧的token
      */
     String refreshToken(String oldToken);

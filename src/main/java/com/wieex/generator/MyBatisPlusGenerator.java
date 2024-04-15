@@ -16,18 +16,20 @@ import java.util.Scanner;
 
 /**
  * MyBatisPlus代码生成器
-
  */
 public class MyBatisPlusGenerator {
 
     public static void main(String[] args) {
         String projectPath = System.getProperty("user.dir");
+
+        System.out.println(projectPath);
+
         String moduleName = scanner("模块名");
         String[] tableNames = scanner("表名，多个英文逗号分割").split(",");
         // 代码生成器
         AutoGenerator autoGenerator = new AutoGenerator(initDataSourceConfig());
         autoGenerator.global(initGlobalConfig(projectPath));
-        autoGenerator.packageInfo(initPackageConfig(projectPath,moduleName));
+        autoGenerator.packageInfo(initPackageConfig(projectPath, moduleName));
         autoGenerator.injection(initInjectionConfig(projectPath, moduleName));
         autoGenerator.template(initTemplateConfig());
         autoGenerator.strategy(initStrategyConfig(tableNames));
@@ -71,7 +73,7 @@ public class MyBatisPlusGenerator {
         String url = props.getStr("dataSource.url");
         String username = props.getStr("dataSource.username");
         String password = props.getStr("dataSource.password");
-        return new DataSourceConfig.Builder(url,username,password)
+        return new DataSourceConfig.Builder(url, username, password)
                 .dbQuery(new MySqlQuery())
                 .build();
     }
@@ -79,7 +81,7 @@ public class MyBatisPlusGenerator {
     /**
      * 初始化包配置
      */
-    private static PackageConfig initPackageConfig(String projectPath,String moduleName) {
+    private static PackageConfig initPackageConfig(String projectPath, String moduleName) {
         Props props = new Props("generator.properties");
         return new PackageConfig.Builder()
                 .moduleName(moduleName)
@@ -102,7 +104,7 @@ public class MyBatisPlusGenerator {
      */
     private static StrategyConfig initStrategyConfig(String[] tableNames) {
         StrategyConfig.Builder builder = new StrategyConfig.Builder();
-                builder.entityBuilder()
+        builder.entityBuilder()
                 .naming(NamingStrategy.underline_to_camel)
                 .columnNaming(NamingStrategy.underline_to_camel)
                 .enableLombok()

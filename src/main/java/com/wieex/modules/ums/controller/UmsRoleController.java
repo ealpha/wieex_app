@@ -18,11 +18,10 @@ import java.util.List;
 
 /**
  * 后台用户角色管理
-
  */
 @Controller
 @Api(tags = "UmsRoleController")
-@Tag(name = "UmsRoleController",description = "后台用户角色管理")
+@Tag(name = "UmsRoleController", description = "后台用户角色管理")
 @RequestMapping("/role")
 public class UmsRoleController {
     @Autowired

@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * SpringSecurity通用配置
  * 包括通用Bean、Security通用Bean及动态权限通用Bean
-
  */
 @Configuration
 public class CommonSecurityConfig {
@@ -41,7 +40,7 @@ public class CommonSecurityConfig {
     }
 
     @Bean
-    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter(){
+    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() {
         return new JwtAuthenticationTokenFilter();
     }
 
@@ -56,7 +55,7 @@ public class CommonSecurityConfig {
     }
 
     @Bean
-    public DynamicSecurityFilter dynamicSecurityFilter(){
+    public DynamicSecurityFilter dynamicSecurityFilter() {
         return new DynamicSecurityFilter();
     }
 }

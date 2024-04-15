@@ -11,7 +11,6 @@ import java.util.List;
 
 /**
  * 后台角色管理Service
-
  */
 public interface UmsRoleService extends IService<UmsRole> {
     /**

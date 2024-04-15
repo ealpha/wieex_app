@@ -14,11 +14,10 @@ import java.util.List;
 
 /**
  * 后台资源分类管理Controller
-
  */
 @Controller
 @Api(tags = "UmsResourceCategoryController")
-@Tag(name = "UmsResourceCategoryController",description = "后台资源分类管理")
+@Tag(name = "UmsResourceCategoryController", description = "后台资源分类管理")
 @RequestMapping("/resourceCategory")
 public class UmsResourceCategoryController {
     @Autowired

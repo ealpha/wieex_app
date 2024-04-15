@@ -17,11 +17,10 @@ import java.util.List;
 
 /**
  * 后台资源管理Controller
-
  */
 @Controller
 @Api(tags = "UmsResourceController")
-@Tag(name = "UmsResourceController",description = "后台资源管理")
+@Tag(name = "UmsResourceController", description = "后台资源管理")
 @RequestMapping("/resource")
 public class UmsResourceController {
 
@@ -86,7 +85,7 @@ public class UmsResourceController {
                                                       @RequestParam(required = false) String urlKeyword,
                                                       @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        Page<UmsResource> resourceList = resourceService.list(categoryId,nameKeyword, urlKeyword, pageSize, pageNum);
+        Page<UmsResource> resourceList = resourceService.list(categoryId, nameKeyword, urlKeyword, pageSize, pageNum);
         return CommonResult.success(CommonPage.restPage(resourceList));
     }
 
