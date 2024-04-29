@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wieex.modules.chip.mapper.ChipKeyIssuanceLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wieex.modules.chip.model.ChipKeyIssuanceLog">
+        <id column="id" property="id" />
+        <result column="chip_factory" property="chipFactory" />
+        <result column="chip" property="chip" />
+        <result column="channel" property="channel" />
+        <result column="burn_factory" property="burnFactory" />
+        <result column="key_info" property="keyInfo" />
+        <result column="chip_id" property="chipId" />
+        <result column="model_version" property="modelVersion" />
+        <result column="sn" property="sn" />
+        <result column="req_timestamp" property="requestTimestamp" />
+        <result column="ip" property="ip" />
+        <result column="user_agent" property="userAgent" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+</mapper>
