@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wieex</groupId>
-    <artifactId>wieex-app</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>chip-key-app</artifactId>
+    <version>1.6.0-SNAPSHOT</version>
     <name>wieex-app</name>
     <description>wieex-app project</description>
 
@@ -22,6 +22,8 @@
         <mybatis-plus.version>3.5.1</mybatis-plus.version>
         <springfox-swagger.version>3.0.0</springfox-swagger.version>
         <velocity.version>2.3</velocity.version>
+
+        <commons-codec.version>1.15</commons-codec.version>
     </properties>
 
     <parent>
@@ -123,6 +125,17 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.64</version>
         </dependency>
     </dependencies>
 

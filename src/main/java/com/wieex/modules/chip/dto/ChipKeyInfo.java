@@ -15,11 +15,11 @@ public class ChipKeyInfo {
     private String factory;
 
     @NotEmpty
-    @ApiModelProperty(value = "芯片ID，一般是CPUID：00000000983055218826E6FFFFFFFFFF", required = true, example = "00000000983055218826E6FFFFFFFFFF")
+    @ApiModelProperty(value = "芯片ID", required = true, example = "0000552188F")
     private String chipId;
 
     @NotEmpty
-    @ApiModelProperty(value = "模型版本，格式：KWS-A1.0.0,从烧录的模型中读取", required = true, example = "KWS-1.0.0P")
+    @ApiModelProperty(value = "模型版本，从烧录的模型中读取或双方约定", required = true, example = "xx-1.0.0P")
     private String modelVersion;
 
     @ApiModelProperty(value = "服务器返回的授权码", required = true)

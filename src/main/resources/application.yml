@@ -55,3 +55,4 @@ secure:
       - /chip/**
       - /apeman/**
       - /uvoice/**
+      - /glazero/**

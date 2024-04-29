@@ -8,12 +8,13 @@ import com.wieex.modules.chip.model.ChipKey;
 import com.wieex.modules.chip.service.ChipKeyIssuanceLogService;
 import com.wieex.modules.chip.service.ChipKeyService;
 import com.wieex.utils.AizipStringUtils;
-import io.swagger.annotations.Api;
-import io.swagger.v3.oas.annotations.tags.Tag;
+//import io.swagger.annotations.Api;
+//import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * <p>
@@ -23,9 +24,10 @@ import org.springframework.web.bind.annotation.*;
  * @author txshi
  * @since 2022-09-26
  */
+@ApiIgnore
 @RestController
-@Api(tags = "声瀚授权管理")
-@Tag(name = "声瀚授权管理", description = "声瀚授权管理")
+// @Api(tags = "声瀚授权管理")
+// @Tag(name = "声瀚授权管理", description = "声瀚授权管理")
 @RequestMapping("/uvoice")
 public class UvoicetechKeyController {
 
