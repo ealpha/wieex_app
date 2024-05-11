@@ -56,3 +56,4 @@ secure:
       - /apeman/**
       - /uvoice/**
       - /glazero/**
+      - /wja/**

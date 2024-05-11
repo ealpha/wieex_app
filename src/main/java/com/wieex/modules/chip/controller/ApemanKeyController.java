@@ -10,9 +10,9 @@ import com.wieex.modules.chip.service.ChipKeyService;
 //import com.wieex.utils.AES128;
 //import com.wieex.utils.AesEcbCodec;
 import com.wieex.utils.AizipStringUtils;
-//import io.swagger.annotations.Api;
-//import io.swagger.annotations.ApiOperation;
-//import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +31,8 @@ import java.io.IOException;
  */
 @ApiIgnore
 @RestController
-//@Api(tags = "授权管理")
-//@Tag(name = "授权管理", description = "授权管理")
+@Api(tags = "授权管理")
+@Tag(name = "授权管理", description = "授权管理")
 @RequestMapping("/apeman")
 public class ApemanKeyController {
 
@@ -52,7 +52,8 @@ public class ApemanKeyController {
     private ChipKeyIssuanceLogService chipKeyIssuanceLogService;
 
 
-    //@ApiOperation("Apeman获取授权密钥")
+    @ApiIgnore
+    @ApiOperation("Apeman获取授权密钥")
     @RequestMapping(value = "/key", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<ChipKeyInfo> getItem(@Validated @RequestBody ApemanDeviceInfoParam apemanDeviceInfoParam) {

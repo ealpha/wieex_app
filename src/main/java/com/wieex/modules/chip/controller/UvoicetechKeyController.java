@@ -8,8 +8,9 @@ import com.wieex.modules.chip.model.ChipKey;
 import com.wieex.modules.chip.service.ChipKeyIssuanceLogService;
 import com.wieex.modules.chip.service.ChipKeyService;
 import com.wieex.utils.AizipStringUtils;
-//import io.swagger.annotations.Api;
-//import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -26,8 +27,8 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @ApiIgnore
 @RestController
-// @Api(tags = "声瀚授权管理")
-// @Tag(name = "声瀚授权管理", description = "声瀚授权管理")
+@Api(tags = "声瀚授权管理")
+@Tag(name = "声瀚授权管理", description = "声瀚授权管理")
 @RequestMapping("/uvoice")
 public class UvoicetechKeyController {
 
@@ -47,7 +48,7 @@ public class UvoicetechKeyController {
     private ChipKeyIssuanceLogService chipKeyIssuanceLogService;
 
 
-    // @ApiOperation("声瀚获取授权密钥")
+    @ApiOperation("声瀚获取授权密钥")
     @RequestMapping(value = "/key", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<ChipKeyInfo> getItem(@Validated @RequestBody UvoiceDeviceInfoParam uvoiceDeviceInfoParam) {

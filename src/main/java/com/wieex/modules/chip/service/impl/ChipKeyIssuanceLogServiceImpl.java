@@ -152,4 +152,26 @@ public class ChipKeyIssuanceLogServiceImpl extends ServiceImpl<ChipKeyIssuanceLo
 
         chipKeyIssuanceLogMapper.insert(issuanceLog);
     }
+
+    public void insertIssuanceWjaLog(WjaDeviceInfoParam wjaDeviceInfoParam, ChipKey chipKey, ChipKeyInfo chipKeyInfo) {
+
+        ChipKeyIssuanceLog issuanceLog = new ChipKeyIssuanceLog();
+
+        issuanceLog.setChipFactory(chipKey.getChipFactory());
+        issuanceLog.setChip(chipKey.getChip());
+        issuanceLog.setChannel(chipKey.getChannel());
+        issuanceLog.setBurnFactory(chipKey.getBurnFactory());
+
+        issuanceLog.setChipId(chipKeyInfo.getChipId());
+        issuanceLog.setModelVersion(chipKeyInfo.getModelVersion());
+        issuanceLog.setSn(chipKeyInfo.getSn());
+        issuanceLog.setRequestTimestamp(now());
+
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        issuanceLog.setIp(request.getRemoteAddr() + "," + request.getParameter("X-Real-IP"));
+        issuanceLog.setCreateTime(new Date());
+
+        chipKeyIssuanceLogMapper.insert(issuanceLog);
+    }
 }

@@ -9,11 +9,13 @@ import com.wieex.modules.chip.service.ChipKeyIssuanceLogService;
 import com.wieex.modules.chip.service.ChipKeyService;
 import com.wieex.utils.AizipStringUtils;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * <p>
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
  * @author txshi
  * @since 2022-09-26
  */
+// @ApiIgnore
 @RestController
 @Api(tags = "Glazero授权管理")
 @Tag(name = "Glazero授权管理", description = "Glazero授权管理")
@@ -45,7 +48,8 @@ public class GlazeroKeyController {
     private ChipKeyIssuanceLogService chipKeyIssuanceLogService;
 
 
-    // @ApiOperation("声瀚获取授权密钥")
+    //@ApiIgnore
+    @ApiOperation("Glazero获取授权密钥")
     @RequestMapping(value = "/key", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<ChipKeyInfo> getItem(@Validated @RequestBody GlazeroDeviceInfoParam glazeroDeviceInfoParam) {
