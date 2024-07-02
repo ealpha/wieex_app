@@ -25,7 +25,7 @@ import springfox.documentation.annotations.ApiIgnore;
  * @author txshi
  * @since 2022-09-26
  */
-// @ApiIgnore
+@ApiIgnore
 @RestController
 @Api(tags = "Glazero授权管理")
 @Tag(name = "Glazero授权管理", description = "Glazero授权管理")
@@ -48,7 +48,7 @@ public class GlazeroKeyController {
     private ChipKeyIssuanceLogService chipKeyIssuanceLogService;
 
 
-    //@ApiIgnore
+    @ApiIgnore
     @ApiOperation("Glazero获取授权密钥")
     @RequestMapping(value = "/key", method = RequestMethod.POST)
     @ResponseBody

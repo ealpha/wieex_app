@@ -79,7 +79,7 @@ public class ApemanKeyController {
 
         String in_str = deviceId+KEY_1+libRandom;
 
-        if(modelVersion.trim().equals("babycry_m3.0.0_16KHz_007d_d3.0.0_apeman")){
+        if(modelVersion.startsWith("babycry_m")){
              in_str = AizipStringUtils.idxString(deviceId,mac_idx) +AizipStringUtils.idxString(KEY_1,k1_idx)   + AizipStringUtils.idxString(libRandom,ran_idx);
         }
 
@@ -118,7 +118,7 @@ public class ApemanKeyController {
         String sn = DigestUtils.md5Hex(deviceId+KEY_1+libRandom+chipKey.getKeyInfo());
 
 
-        if(modelVersion.trim().equals("babycry_m3.0.0_16KHz_007d_d3.0.0_apeman")){
+        if(modelVersion.startsWith("babycry_m")){
             sn = DigestUtils.md5Hex(
                     AizipStringUtils.idxString(deviceId,mac_idx)
                             +AizipStringUtils.idxString(KEY_1,k1_idx)
