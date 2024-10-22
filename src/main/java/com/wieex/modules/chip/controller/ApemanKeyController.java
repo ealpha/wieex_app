@@ -79,10 +79,9 @@ public class ApemanKeyController {
 
         String in_str = deviceId+KEY_1+libRandom;
 
-        if(modelVersion.startsWith("babycry_m")){
+        if(modelVersion.startsWith("babycry_m") || modelVersion.indexOf("apeman_JZT23")>0){
              in_str = AizipStringUtils.idxString(deviceId,mac_idx) +AizipStringUtils.idxString(KEY_1,k1_idx)   + AizipStringUtils.idxString(libRandom,ran_idx);
         }
-
 
         System.out.println("==============");
         System.out.println(in_str);
