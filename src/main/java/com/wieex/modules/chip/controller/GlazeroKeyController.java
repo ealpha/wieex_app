@@ -71,6 +71,8 @@ public class GlazeroKeyController {
         String checkDigit= glazeroDeviceInfoParam.getCheckDigit();
 
 
+
+
         //先校验，校验码
         String in_str = AizipStringUtils.idxString(deviceId,mac_idx) +AizipStringUtils.idxString(KEY_1,k1_idx)   + AizipStringUtils.idxString(libRandom,ran_idx);
         System.out.println("==============");

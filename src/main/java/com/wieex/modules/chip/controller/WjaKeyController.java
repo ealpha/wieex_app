@@ -2,28 +2,24 @@ package com.wieex.modules.chip.controller;
 
 import com.wieex.common.api.CommonResult;
 import com.wieex.common.api.ResultCode;
-import com.wieex.modules.chip.dto.ApemanDeviceInfoParam;
 import com.wieex.modules.chip.dto.ChipKeyInfo;
+import com.wieex.modules.chip.dto.WjaDeviceInfoParam;
 import com.wieex.modules.chip.model.ChipKey;
 import com.wieex.modules.chip.service.ChipKeyIssuanceLogService;
 import com.wieex.modules.chip.service.ChipKeyService;
-//import com.wieex.utils.AES128;
-//import com.wieex.utils.AesEcbCodec;
 import com.wieex.utils.AizipStringUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.apache.commons.codec.digest.DigestUtils;
 import springfox.documentation.annotations.ApiIgnore;
-
-import java.io.IOException;
 
 /**
  * <p>
- * Apenman  前端控制器
+ * WJA授权管理  前端控制器
  * </p>
  *
  * @author txshi
@@ -31,13 +27,13 @@ import java.io.IOException;
  */
 @ApiIgnore
 @RestController
-@Api(tags = "授权管理")
-@Tag(name = "授权管理", description = "授权管理")
-@RequestMapping("/apeman")
-public class ApemanKeyController {
+@Api(tags = "WJA授权管理")
+@Tag(name = "WJA授权管理", description = "WJA授权管理")
+@RequestMapping("/wja")
+public class WjaKeyController {
 
-    String KEY_1 = "499c89ff1b59fa8be89d7d0cfd9434d1";
-    String KEY_2 = "4bd9cc40c2d82aafe08fb0362a57fa0e";
+    String KEY_1 = "acf7ef943fdeb3cbfed8dd0d8f584731";
+    String KEY_2 = "c0b8093959a2fda1413b810dfdf2b02f";
 
     int[] k1_idx = {30, 8, 11, 18, 12, 14, 26, 11, 16, 18, 22, 8, 16, 6, 20, 13};
     int[] k2_idx = {24, 22, 16, 21, 5, 12, 19, 15, 7, 10, 2, 3, 20, 9, 26, 18};
@@ -53,13 +49,13 @@ public class ApemanKeyController {
 
 
     @ApiIgnore
-    @ApiOperation("Apeman获取授权密钥")
+    @ApiOperation("WJA获取授权密钥")
     @RequestMapping(value = "/key", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<ChipKeyInfo> getItem(@Validated @RequestBody ApemanDeviceInfoParam apemanDeviceInfoParam) {
+    public CommonResult<ChipKeyInfo> getItem(@Validated @RequestBody WjaDeviceInfoParam wjaDeviceInfoParam) {
 
         //判断info的长度
-        String[] chipInfo = apemanDeviceInfoParam.getFactory().split("-");
+        String[] chipInfo = wjaDeviceInfoParam.getFactory().split("-");
         if (chipInfo.length != 4) {
             return CommonResult.failed(ResultCode.VALIDATE_FAILED);
         }
@@ -69,20 +65,14 @@ public class ApemanKeyController {
         String channel = chipInfo[2];
         String burnFactory = chipInfo[3];
 
-        String modelVersion =  apemanDeviceInfoParam.getModelVersion();
-        String deviceId =  apemanDeviceInfoParam.getDeviceId();
-        String libRandom = apemanDeviceInfoParam.getLibRandom();
-        String checkDigit= apemanDeviceInfoParam.getCheckDigit();
+        String modelVersion =  wjaDeviceInfoParam.getModelVersion();
+        String deviceId =  wjaDeviceInfoParam.getDeviceId();
+        String libRandom = wjaDeviceInfoParam.getLibRandom();
+        String checkDigit= wjaDeviceInfoParam.getCheckDigit();
 
 
         //先校验，校验码
-
-        String in_str = deviceId+KEY_1+libRandom;
-
-        if(modelVersion.startsWith("babycry_m") || modelVersion.indexOf("apeman_JZT23")>0){
-             in_str = AizipStringUtils.idxString(deviceId,mac_idx) +AizipStringUtils.idxString(KEY_1,k1_idx)   + AizipStringUtils.idxString(libRandom,ran_idx);
-        }
-
+        String in_str = AizipStringUtils.idxString(deviceId,mac_idx) +AizipStringUtils.idxString(KEY_1,k1_idx)   + AizipStringUtils.idxString(libRandom,ran_idx);
         System.out.println("==============");
         System.out.println(in_str);
         String checkDigitServer = DigestUtils.md5Hex(in_str);
@@ -112,20 +102,14 @@ public class ApemanKeyController {
 
         //进行算法处理
         System.out.println(chipKey.getKeyInfo());
-        System.out.println(apemanDeviceInfoParam.getDeviceId());
+        System.out.println(wjaDeviceInfoParam.getDeviceId());
 
-        String sn = DigestUtils.md5Hex(deviceId+KEY_1+libRandom+chipKey.getKeyInfo());
-
-
-        if(modelVersion.startsWith("babycry_m") || modelVersion.indexOf("apeman_JZT23")>0){
-            sn = DigestUtils.md5Hex(
-                    AizipStringUtils.idxString(deviceId,mac_idx)
-                            +AizipStringUtils.idxString(KEY_1,k1_idx)
-                            +AizipStringUtils.idxString(libRandom,ran_idx)
-                            +AizipStringUtils.idxString(chipKey.getKeyInfo(),k2_idx)
-            );
-        }
-
+        String sn = DigestUtils.md5Hex(
+                 AizipStringUtils.idxString(deviceId,mac_idx)
+                +AizipStringUtils.idxString(KEY_1,k1_idx)
+                +AizipStringUtils.idxString(libRandom,ran_idx)
+                +AizipStringUtils.idxString(chipKey.getKeyInfo(),k2_idx)
+        );
 
         ChipKeyInfo cki = new ChipKeyInfo();
         cki.setChipId(deviceId+"_"+libRandom+"_"+checkDigit);
@@ -133,7 +117,7 @@ public class ApemanKeyController {
         cki.setModelVersion(modelVersion);
         cki.setSn(sn);
 
-        chipKeyIssuanceLogService.insertIssuanceApemanLog(apemanDeviceInfoParam, chipKey, cki);
+        chipKeyIssuanceLogService.insertIssuanceWjaLog(wjaDeviceInfoParam, chipKey, cki);
 
         return CommonResult.success(cki);
 
