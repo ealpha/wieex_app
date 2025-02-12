@@ -41,7 +41,7 @@ sign = md5(chipId + factory + modelVersion + reqTimestamp + Secret)
 - `factory`：厂商信息  
 - `modelVersion`：设备型号及版本号  
 - `reqTimestamp`：请求时间戳  
-- `Secret`：服务器预设的密钥（ **其他途径发送** ）
+- `Secret`：服务器预设的密钥（ **其他途径发送给合作方** ）
 
 签名计算示例（伪代码）：  
 ```python
