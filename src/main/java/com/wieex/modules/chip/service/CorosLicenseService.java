@@ -48,16 +48,21 @@ public class CorosLicenseService {
         String expiry = getExpiryAfterDays(7);
         System.out.println("许可证过期时间: " + expiry);
 
-        JSONObject json = new JSONObject();
-        json.put("app_id", appId);
-        json.put("platform", platform);
-        json.put("expiry", expiry);
+        JSONObject licenseInfo = new JSONObject();
+        licenseInfo.put("app_id", appId);
+        licenseInfo.put("platform", platform);
+        licenseInfo.put("expiry", expiry);
 
         PrivateKey privateKey = RsaUtils.loadPrivateKey();
-        String encryptedLicense = RsaUtils.encrypt(json.toString(), privateKey);
+        String encryptedLicense = RsaUtils.encrypt(licenseInfo.toString(), privateKey);
         System.out.println("许可证生成成功 - appId: " + appId + ", platform: " + platform);
 
-        return encryptedLicense;
+        JSONObject result = new JSONObject();
+        result.put("license", encryptedLicense);
+        result.put("app_id", appId);
+        result.put("platform", platform);
+        result.put("expiry", expiry);
+        return result.toString();
     }
 
     public String verifyLicense(String encryptedLicense) throws Exception {
@@ -94,7 +99,14 @@ public class CorosLicenseService {
         }
 
         System.out.println("许可证验证通过 - appId: " + appId + ", platform: " + platform);
-        return "License valid";
+        
+        // 返回包含平台和有效时间的 JSON
+        JSONObject result = new JSONObject();
+        result.put("status", "valid");
+        result.put("app_id", appId);
+        result.put("platform", platform);
+        result.put("expiry", expiry);
+        return result.toString();
     }
 
     private String getExpiryAfterDays(int days) {

@@ -220,4 +220,30 @@ public class ChipKeyIssuanceLogServiceImpl extends ServiceImpl<ChipKeyIssuanceLo
         chipKeyIssuanceLogMapper.insert(issuanceLog);
 
     }
+
+    @Override
+    public void insertLicenseGenerateLog(String appId, String platform, String license, String expiry) {
+        ChipKeyIssuanceLog issuanceLog = new ChipKeyIssuanceLog();
+        
+        // 设置基本信息
+        issuanceLog.setChipFactory("COROS");
+        issuanceLog.setChip("LICENSE");
+        issuanceLog.setChannel(platform);
+        issuanceLog.setBurnFactory("COROS");
+        
+        // 设置许可证信息
+        issuanceLog.setChipId(appId);
+        issuanceLog.setModelVersion("LICENSE");
+        issuanceLog.setSn(license);
+        issuanceLog.setRequestTimestamp(now());
+        
+        // 设置IP和创建时间
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        issuanceLog.setIp(request.getRemoteAddr() + "," + request.getParameter("X-Real-IP"));
+        issuanceLog.setCreateTime(new Date());
+        
+        // 保存日志
+        chipKeyIssuanceLogMapper.insert(issuanceLog);
+    }
 }
