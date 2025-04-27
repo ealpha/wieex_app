@@ -21,5 +21,5 @@ public interface ChipKeyIssuanceLogService extends IService<ChipKeyIssuanceLog> 
     void insertIssuanceGlazeroLog(GlazeroDeviceInfoParam glazeroDeviceInfoParam, ChipKey chipKey, ChipKeyInfo chipKeyInfo);
     void insertIssuanceWjaLog(WjaDeviceInfoParam wjaDeviceInfoParam, ChipKey chipKey, ChipKeyInfo chipKeyInfo);
     void insertIssuanceCorosLog(CorosDeviceInfoParam corosDeviceInfoParam, ChipKey chipKey, ChipKeyInfo chipKeyInfo);
-
+    void insertIssuancePawpawLog(PawpawDeviceInfoParam pawpawDeviceInfoParam, ChipKey chipKey, ChipKeyInfo chipKeyInfo);
 }

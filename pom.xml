@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wieex</groupId>
     <artifactId>chip-key-app</artifactId>
-    <version>2025-02-12-02</version>
+    <version>2025-04-27-01</version>
     <name>wieex-app</name>
     <description>wieex-app project</description>
 
@@ -136,6 +136,12 @@
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.64</version>
+        </dependency>
+        <!-- JSON 处理 -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20231013</version>
         </dependency>
     </dependencies>
 
