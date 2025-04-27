@@ -30,7 +30,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @RestController
 @Api(tags = "Coros授权管理")
 @Tag(name = "Coros授权管理", description = "Coros授权管理")
-@RequestMapping("/coros")
+@RequestMapping("/coros-del")
 public class CorosKeyController {
 
     String KEY_1 = "bfa574687c1e8295f709475f585ce5a6";
